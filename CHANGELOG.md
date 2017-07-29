@@ -10,6 +10,12 @@ Project page https://github.com/pontikis/phpS3Simple
 License [MIT](https://github.com/pontikis/phpS3Simple/blob/master/LICENSE)
 
 
+Release 0.3.0 (29 Jul 2017)
+-------------------------
+
+* store presigned URLs in memcached #7
+
+
 Release 0.1.0 (21 Jul 2017)
 -------------------------
 

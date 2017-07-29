@@ -100,8 +100,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a129909a122efc38e240bd1a78ea9588c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classphp_s3_simple.html#a129909a122efc38e240bd1a78ea9588c">__construct</a> (array $options)</td></tr>
-<tr class="separator:a129909a122efc38e240bd1a78ea9588c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39962193bcefac5b57ea496264bd8165"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classphp_s3_simple.html#a39962193bcefac5b57ea496264bd8165">__construct</a> (dacapo $ds, array $options)</td></tr>
+<tr class="separator:a39962193bcefac5b57ea496264bd8165"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a000156b06ea29dbc1433e6bd641111a9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classphp_s3_simple.html#a000156b06ea29dbc1433e6bd641111a9">getS3Client</a> ()</td></tr>
 <tr class="separator:a000156b06ea29dbc1433e6bd641111a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a03582271ad4fdc21fa01a7901bf3605f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classphp_s3_simple.html#a03582271ad4fdc21fa01a7901bf3605f">getLastError</a> ()</td></tr>
@@ -117,6 +117,8 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
+<tr class="memitem:a1812a4caf64434b22b146b17c25560f2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classphp_s3_simple.html#a1812a4caf64434b22b146b17c25560f2">$ds</a></td></tr>
+<tr class="separator:a1812a4caf64434b22b146b17c25560f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac55473ea38304d969abbe572673a1c1f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classphp_s3_simple.html#ac55473ea38304d969abbe572673a1c1f">$s3_client</a></td></tr>
 <tr class="separator:ac55473ea38304d969abbe572673a1c1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60375900d6ade93e662c348772867d64"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classphp_s3_simple.html#a60375900d6ade93e662c348772867d64">$last_error</a></td></tr>
@@ -127,18 +129,28 @@ Private Attributes</h2></td></tr>
 <p>Simple aws-sdk-php wrapper for Amazon S3 <a href="https://github.com/pontikis/phpS3Simple">https://github.com/pontikis/phpS3Simple</a></p>
 <dl class="section author"><dt>Author</dt><dd>Christos Pontikis <a href="http://pontikis.net">http://pontikis.net</a> </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Christos Pontikis  MIT <a href="http://opensource.org/licenses/MIT">http://opensource.org/licenses/MIT</a> </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>0.1.0 (21 Jul 2017) </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>0.3.0 (29 Jul 2017) </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a129909a122efc38e240bd1a78ea9588c"></a>
+<a class="anchor" id="a39962193bcefac5b57ea496264bd8165"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">__construct </td>
           <td>(</td>
-          <td class="paramtype">array&#160;</td>
-          <td class="paramname"><em>$options</em></td><td>)</td>
+          <td class="paramtype">dacapo&#160;</td>
+          <td class="paramname"><em>$ds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">array&#160;</td>
+          <td class="paramname"><em>$options</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -275,6 +287,26 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Field Documentation</h2>
+<a class="anchor" id="a1812a4caf64434b22b146b17c25560f2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">$ds</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a60375900d6ade93e662c348772867d64"></a>
 <div class="memitem">
 <div class="memproto">

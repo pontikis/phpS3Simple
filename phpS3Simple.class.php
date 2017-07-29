@@ -1,5 +1,6 @@
 <?php
 require_once C_CLASS_AWS_SDK_PHP_PATH;
+
 use Aws\S3\S3Client;
 use Aws\Exception\AwsException;
 use Aws\S3\Exception\S3Exception;
@@ -13,11 +14,12 @@ use Aws\S3\Exception\S3Exception;
  * @author     Christos Pontikis http://pontikis.net
  * @copyright  Christos Pontikis
  * @license    MIT http://opensource.org/licenses/MIT
- * @version    0.1.0 (21 Jul 2017)
+ * @version    0.3.0 (29 Jul 2017)
  *
  */
 class phpS3Simple {
 
+	private $ds;
 	private $s3_client;
 
 	private $last_error;
@@ -26,8 +28,9 @@ class phpS3Simple {
 	 * phpS3Simple constructor.
 	 * @param array $options
 	 */
-	public function __construct(array $options) {
+	public function __construct(dacapo $ds, array $options) {
 
+		$this->ds = $ds;
 		$this->last_error = null;
 
 		try {
@@ -43,7 +46,7 @@ class phpS3Simple {
 			// create S3 client
 			$this->s3_client = new S3Client($opt);
 
-		} catch (S3Exception $e) {
+		} catch(S3Exception $e) {
 			$this->last_error = $e->getMessage();
 		} catch(AwsException $e) {
 			$this->last_error = $e->getMessage();
@@ -70,22 +73,36 @@ class phpS3Simple {
 			'Key' => $options['Key']
 		);
 
+		$use_memcached = array_key_exists('cache_url_expiration', $options) ? true : false;
+
+		if($use_memcached) {
+			$url = $this->ds->pull_from_memcached($opt['Key']);
+			if($url) {
+				return $url;
+			}
+		}
+
 		try {
 
 			$cmd = $this->s3_client->getCommand('GetObject', $opt);
 
 			$request = $this->s3_client->createPresignedRequest($cmd, $options['expire']);
 
-			// Get the actual presigned-url
-			return (string)$request->getUri();
+			$url = (string)$request->getUri();
 
-		} catch (S3Exception $e) {
+		} catch(S3Exception $e) {
 			$this->last_error = $e->getMessage();
 			return false;
 		} catch(AwsException $e) {
 			$this->last_error = $e->getMessage();
 			return false;
 		}
+
+		if($use_memcached) {
+			$this->ds->push_to_memcached($opt['Key'], $url, $options['cache_url_expiration']);
+		}
+
+		return $url;
 
 	}
 
@@ -119,7 +136,7 @@ class phpS3Simple {
 
 			return true;
 
-		} catch (S3Exception $e) {
+		} catch(S3Exception $e) {
 			$this->last_error = $e->getMessage();
 			return false;
 		} catch(AwsException $e) {
@@ -152,7 +169,7 @@ class phpS3Simple {
 
 			return true;
 
-		} catch (S3Exception $e) {
+		} catch(S3Exception $e) {
 			$this->last_error = $e->getMessage();
 			return false;
 		} catch(AwsException $e) {
@@ -181,7 +198,7 @@ class phpS3Simple {
 
 			return true;
 
-		} catch (S3Exception $e) {
+		} catch(S3Exception $e) {
 			$this->last_error = $e->getMessage();
 			return false;
 		} catch(AwsException $e) {

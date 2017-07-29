@@ -15,11 +15,12 @@ License [MIT](https://github.com/pontikis/phpS3Simple/blob/master/LICENSE)
 2. putObject
 3. deleteObject
 4. createPresignedURL
-
+5. store presigned URLs in memcached
 
 ## Dependencies
 
 * AWS SDK for PHP https://aws.amazon.com/sdk-for-php/
+* Dacapo (Simple PHP database and memcached wrapper) https://github.com/pontikis/dacapo
 
 (PHP 5 >= 5.2.0, PHP 7)
 
